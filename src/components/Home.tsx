@@ -13,7 +13,7 @@ export default function Home() {
   const { addLog } = useDebugPanel();
   const [isGridView, setIsGridView] = React.useState(true);
   const [groupByChannels, setGroupByChannels] = React.useState(false);
-  const [sortBy, setSortBy] = React.useState<SortOption>('views');
+  const [sortBy, setSortBy] = React.useState<SortOption>('original');
   
   const recommendedVideos = React.useMemo(() => 
     SEARCH_RESULTS.slice(0, 8), 
@@ -49,9 +49,9 @@ export default function Home() {
           isGridView={isGridView}
         />
       ) : isGridView ? (
-        <VideoGrid videos={recommendedVideos} />
+        <VideoGrid videos={recommendedVideos} sortBy={sortBy} />
       ) : (
-        <SearchResultsList videos={recommendedVideos} />
+        <SearchResultsList videos={recommendedVideos} sortBy={sortBy} />
       )}
     </div>
   );

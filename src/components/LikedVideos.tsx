@@ -13,7 +13,7 @@ export default function LikedVideos() {
   const { addLog } = useDebugPanel();
   const [isGridView, setIsGridView] = React.useState(true);
   const [groupByChannels, setGroupByChannels] = React.useState(false);
-  const [sortBy, setSortBy] = React.useState<SortOption>('views');
+  const [sortBy, setSortBy] = React.useState<SortOption>('original');
   const likedVideos = React.useMemo(() => [
     // React Masters - highest viewed video
     SEARCH_RESULTS.find(v => v.channel.name === 'React Masters')!,
@@ -53,9 +53,9 @@ export default function LikedVideos() {
             isGridView={isGridView}
           />
         ) : isGridView ? (
-          <VideoGrid videos={likedVideos} />
+          <VideoGrid videos={likedVideos} sortBy={sortBy} />
         ) : (
-          <SearchResultsList videos={likedVideos} />
+          <SearchResultsList videos={likedVideos} sortBy={sortBy} />
         )
       ) : (
         <div className="text-center text-gray-500 mt-12">

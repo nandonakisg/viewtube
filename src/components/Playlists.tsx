@@ -15,7 +15,7 @@ export default function Playlists() {
   const [selectedPlaylist, setSelectedPlaylist] = React.useState(PLAYLISTS[0]);
   const [isGridView, setIsGridView] = React.useState(true);
   const [groupByChannels, setGroupByChannels] = React.useState(false);
-  const [sortBy, setSortBy] = React.useState<SortOption>('views');
+  const [sortBy, setSortBy] = React.useState<SortOption>('original');
 
   const channelGroups = React.useMemo(
     () => groupByChannel(selectedPlaylist.videos),
@@ -64,9 +64,9 @@ export default function Playlists() {
               isGridView={isGridView}
             />
           ) : isGridView ? (
-            <VideoGrid videos={selectedPlaylist.videos} />
+            <VideoGrid videos={selectedPlaylist.videos} sortBy={sortBy} />
           ) : (
-            <SearchResultsList videos={selectedPlaylist.videos} />
+            <SearchResultsList videos={selectedPlaylist.videos} sortBy={sortBy} />
           )}
         </>
       )}

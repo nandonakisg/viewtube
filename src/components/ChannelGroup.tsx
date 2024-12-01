@@ -1,14 +1,19 @@
 import { type Video } from '../types/video';
+import { type SortOption } from './SortControls';
 import SearchResultCard from './SearchResultCard';
 import SearchResultGrid from './SearchResultGrid';
+import { sortVideos } from '../utils/sortVideos';
 
 interface ChannelGroupProps {
   channel: Video['channel'];
   videos: Video[];
   isGridView: boolean;
+  sortBy?: SortOption;
 }
 
-export default function ChannelGroup({ channel, videos, isGridView }: ChannelGroupProps) {
+export default function ChannelGroup({ channel, videos, isGridView, sortBy = 'original' }: ChannelGroupProps) {
+  const sortedVideos = sortVideos(videos, sortBy);
+
   return (
     <div>
       <div className="flex items-center gap-3 mb-4">
@@ -31,13 +36,13 @@ export default function ChannelGroup({ channel, videos, isGridView }: ChannelGro
 
       {isGridView ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 3xl:grid-cols-7 4xl:grid-cols-8 gap-x-4 gap-y-8">
-          {videos.map(video => (
+          {sortedVideos.map(video => (
             <SearchResultGrid key={video.id} video={video} />
           ))}
         </div>
       ) : (
         <div className="space-y-4">
-          {videos.map(video => (
+          {sortedVideos.map(video => (
             <SearchResultCard key={video.id} video={video} />
           ))}
         </div>

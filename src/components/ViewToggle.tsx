@@ -13,7 +13,7 @@ export default function ViewToggle({ isGridView, onToggle }: ViewToggleProps) {
         className={`p-2 rounded-lg transition-colors ${
           !isGridView ? 'bg-blue-100 text-blue-600' : 'hover:bg-gray-50'
         }`}
-        aria-label="List view"
+        title="Show videos in list view"
       >
         <LayoutList className="w-5 h-5" />
       </button>
@@ -22,7 +22,7 @@ export default function ViewToggle({ isGridView, onToggle }: ViewToggleProps) {
         className={`p-2 rounded-lg transition-colors ${
           isGridView ? 'bg-blue-100 text-blue-600' : 'hover:bg-gray-50'
         }`}
-        aria-label="Grid view"
+        title="Show videos in grid view"
       >
         <LayoutGrid className="w-5 h-5" />
       </button>

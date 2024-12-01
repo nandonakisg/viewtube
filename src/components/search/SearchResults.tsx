@@ -15,7 +15,7 @@ export default function SearchResults() {
   const [searchParams] = useSearchParams();
   const [isGridView, setIsGridView] = React.useState(true);
   const [groupByChannels, setGroupByChannels] = React.useState<boolean>(false);
-  const [sortBy, setSortBy] = React.useState<SortOption>('views');
+  const [sortBy, setSortBy] = React.useState<SortOption>('original');
   const { addLog } = useDebugPanel();
   const query = searchParams.get('q') || '';
 
@@ -45,11 +45,12 @@ export default function SearchResults() {
         <ChannelGroups
           channelGroups={channelGroups}
           isGridView={isGridView}
+          sortBy={sortBy}
         />
       ) : isGridView ? (
-        <VideoGrid videos={filteredVideos} />
+        <VideoGrid videos={filteredVideos} sortBy={sortBy} />
       ) : (
-        <SearchResultsList videos={filteredVideos} />
+        <SearchResultsList videos={filteredVideos} sortBy={sortBy} />
       )}
       
       {filteredVideos.length === 0 && (

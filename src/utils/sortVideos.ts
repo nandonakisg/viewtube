@@ -9,6 +9,10 @@ export function sortVideos(videos: Video[], sortBy: SortOption): Video[] {
 
   return [...videos].sort((a, b) => {
     try {
+      if (sortBy === 'original') {
+        return 0; // Preserve original order
+      }
+      
       if (sortBy === 'views') {
         return b.views - a.views;
       }
