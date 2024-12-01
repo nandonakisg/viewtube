@@ -1,0 +1,13 @@
+path,modifications,size_bytes
+src/data/sampleVideos.ts,12,8742
+src/components/SearchResults.tsx,8,3156
+src/components/VideoCard.tsx,6,1245
+src/components/Header.tsx,5,2134
+src/components/Sidebar.tsx,5,1876
+src/components/VideoStats.tsx,4,892
+src/components/SearchResultCard.tsx,4,1567
+src/utils/dateUtils.ts,3,156
+src/utils/sortVideos.ts,3,789
+src/hooks/useVideoSearch.ts,3,678
+src/components/Home.tsx,2,892
+src/App.tsx,2,789
