@@ -1,5 +1,6 @@
 import { type Video } from '../types/video';
 import VideoStats from './VideoStats';
+import VideoMenu from './VideoMenu';
 
 interface VideoCardProps {
   video: Video;
@@ -8,12 +9,13 @@ interface VideoCardProps {
 export default function VideoCard({ video }: VideoCardProps) {
   return (
     <div className="group cursor-pointer">
-      <div className="relative w-full aspect-video rounded-lg overflow-hidden">
+      <div className="relative w-full aspect-video rounded-lg overflow-hidden group">
         <img
           src={video.thumbnail}
           alt={video.title}
           className="object-cover w-full h-full hover:scale-105 transition-transform duration-200"
         />
+        <VideoMenu videoId={video.id} />
         <div className="absolute bottom-1 right-1 bg-black/80 text-white text-xs px-2 py-0.5 rounded font-medium">
           {video.duration}
         </div>

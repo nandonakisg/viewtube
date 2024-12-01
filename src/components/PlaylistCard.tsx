@@ -26,17 +26,12 @@ export default function PlaylistCard({ playlist, onClick, isSelected }: Playlist
           {playlist.videos.length} videos
         </div>
       </div>
-      <div className="flex gap-2 mt-2 group-hover:bg-gray-50 rounded-lg p-2 -mx-2">
-        <img
-          src={playlist.videos[0]?.channel.avatar}
-          alt={playlist.videos[0]?.channel.name}
-          className="w-8 h-8 rounded-full flex-shrink-0"
-        />
-        <div className="flex flex-col min-h-[4rem]">
-          <h3 className="font-medium line-clamp-2 text-[14px] leading-[20px] min-h-[40px] text-[#0f0f0f]">
+      <div className="mt-2 group-hover:bg-gray-50 rounded-lg p-2 -mx-2">
+        <div>
+          <h3 className="font-medium line-clamp-2 text-[14px] leading-[20px] text-[#0f0f0f]">
             {playlist.title}
           </h3>
-          <p className="text-[#606060] text-[12px] leading-[18px] mt-auto">
+          <p className="text-[#606060] text-[12px] leading-[18px]">
             Updated {getMostRecentVideo(playlist.videos)?.timestamp ?
               formatRelativeTime(getMostRecentVideo(playlist.videos)!.timestamp) :
               'No videos'}

@@ -1,6 +1,5 @@
 import React from 'react';
 import { useDebugPanel } from '../hooks/useDebugPanel';
-import { PLAYLISTS } from '../data/playlists';
 import { ListVideo } from 'lucide-react';
 import PlaylistCard from './PlaylistCard';
 import ViewControls from './ViewControls';
@@ -9,10 +8,12 @@ import { type SortOption } from './SortControls';
 import { groupByChannel } from '../utils/groupByChannel';
 import ChannelGroups from './search/ChannelGroups';
 import SearchResultsList from './search/SearchResultsList';
+import { usePlaylistStore } from '../stores/usePlaylistStore';
 
 export default function Playlists() {
   const { addLog } = useDebugPanel();
-  const [selectedPlaylist, setSelectedPlaylist] = React.useState(PLAYLISTS[0]);
+  const playlists = usePlaylistStore(state => state.playlists);
+  const [selectedPlaylist, setSelectedPlaylist] = React.useState(playlists[0]);
   const [isGridView, setIsGridView] = React.useState(true);
   const [groupByChannels, setGroupByChannels] = React.useState(false);
   const [sortBy, setSortBy] = React.useState<SortOption>('original');
@@ -35,7 +36,7 @@ export default function Playlists() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 pb-8 mb-8 border-b border-gray-200">
-        {PLAYLISTS.map(playlist => (
+        {playlists.map(playlist => (
           <PlaylistCard
             key={playlist.id}
             playlist={playlist}
